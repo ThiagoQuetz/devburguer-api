@@ -9,11 +9,11 @@ import User from '../models/User';
 
 class OrderController {
     async store(request, response) {
-        const schema = Yup.object({
+        const schema = Yup.object().shape({
             products: Yup.array()
                 .required()
                 .of(
-                    Yup.object({
+                    Yup.object().shape({
                         id: Yup.number().required(),
                         quantity: Yup.number().required(),
                     }),
